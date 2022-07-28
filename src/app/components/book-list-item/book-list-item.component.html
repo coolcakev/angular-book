@@ -1,0 +1,22 @@
+<mat-card class="card">
+  <mat-card-header class="header" *ngIf="book.cover" >
+    <img mat-card-image [src]="book.cover | urlForPhoto" [alt]="book.title">
+  </mat-card-header>
+  <mat-card-content>  
+    <mat-card-title>{{book.title}}</mat-card-title>
+    <mat-card-subtitle>Review : {{book.reviewsNumber}}</mat-card-subtitle>
+    <mat-card-subtitle>Rating : {{book.rating | number:"1.1"}}</mat-card-subtitle>    
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+    (click)="handleViewClick(book.id)"
+    mat-flat-button >
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button
+    (click)="bookService.changeCurrentUpdateBook(book)"
+    mat-flat-button >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

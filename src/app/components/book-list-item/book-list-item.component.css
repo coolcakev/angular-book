@@ -1,0 +1,15 @@
+.card{
+    display:flex;
+    justify-content: space-between;
+    height:100px;
+    min-width: 300px;
+    max-width: 400px;
+    flex-direction: row;
+}
+button{
+    border:1px solid black;
+}
+.header{
+    width:30%;
+    margin-right: 15px;
+}

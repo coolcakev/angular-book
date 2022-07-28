@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>{{book.id==null?"Add":"Edit"}} Book</h2>
+  <div class="line"></div>
+  <form [formGroup]="form" (submit)="submit()">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" [ngClass]="{
+           'is-invalid':title.errors?.required&&(title.touched||isSubmited)
+         }" class="form-control is-invalid" formControlName="title" />
+      <div class="invalid-feedback">
+        Please write title.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Cover</label>     
+      <input
+       formControlName="cover"
+       (change)="onFileChange($event)"
+       type="file" class="form-control" accept="image/*" />
+    </div>
+
+    <div class="form-group">
+      <label>Genre</label>
+      <input type="text" [ngClass]="{
+         'is-invalid':genre.errors?.required&&(genre.touched||isSubmited)
+       }" class="form-control" formControlName="genre" />
+      <div class="invalid-feedback">
+        Please write genre.
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Author</label>
+      <input type="text" [ngClass]="{
+        'is-invalid':author.errors?.required&&(author.touched||isSubmited)
+      }" class="form-control" formControlName="author" />
+      <div class="invalid-feedback">
+        Please write author.
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Content</label>
+      <textarea class="form-control" formControlName="content"></textarea>
+    </div>
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary">{{book.id==null?"Add":"Edit"}}</button>
+      <button (click)="
+       isSubmited=false;
+       form.reset();
+       bookService.clearCurrentUpdateBook()" type="button" class="btn btn-warning">Clear</button>
+    </div>
+  </form>
+</div>

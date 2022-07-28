@@ -1,0 +1,9 @@
+<div class="example-button-row">
+  <button (click)="this.bookService.getAll()" mat-flat-button color="primary">All</button>
+  <button (click)="this.bookService.getRecommended();" mat-flat-button color="primary">Recomended</button>
+</div>
+<div class="container">
+  <div class="books-container">
+    <app-book-list-item *ngFor="let book of bookService.books$ | async" [book]="book"></app-book-list-item>
+  </div>
+</div>
